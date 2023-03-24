@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.HoaDonChiTietRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.HoaDonChiTiet">
+        <!--@JPA.Support generated on 2023-02-17 19:32:21.-->
+        <!--@Table hoa_don_chi_tiet-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="hoadonchitiet_hoadon" jdbcType="INTEGER" property="hoadonchitietHoadon"/>
+        <result column="hoadonchitiet_chitietsanpham" jdbcType="INTEGER" property="hoadonchitietChitietsanpham"/>
+        <result column="so_luong" jdbcType="INTEGER" property="soLuong"/>
+        <result column="don_gia" jdbcType="DECIMAL" property="donGia"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:21.-->
+        id, hoadonchitiet_hoadon, hoadonchitiet_chitietsanpham, so_luong, don_gia
+    </sql>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.SanPhamRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.SanPham">
+        <!--@JPA.Support generated on 2023-02-17 19:32:21.-->
+        <!--@Table san_pham-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="ma" jdbcType="VARCHAR" property="ma"/>
+        <result column="ten" jdbcType="VARCHAR" property="ten"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:21.-->
+        id, ma, ten
+    </sql>
+</mapper>

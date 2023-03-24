@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.GioHangRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.GioHang">
+        <!--@JPA.Support generated on 2023-02-17 19:32:20.-->
+        <!--@Table gio_hang-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="khachhang_id" jdbcType="INTEGER" property="khachhangId"/>
+        <result column="nhanvien_id" jdbcType="INTEGER" property="nhanvienId"/>
+        <result column="ma" jdbcType="VARCHAR" property="ma"/>
+        <result column="ngay_tao" jdbcType="TIMESTAMP" property="ngayTao"/>
+        <result column="ngay_thanh_toan" jdbcType="TIMESTAMP" property="ngayThanhToan"/>
+        <result column="ten_nguoi_nhan" jdbcType="VARCHAR" property="tenNguoiNhan"/>
+        <result column="dia_chi" jdbcType="VARCHAR" property="diaChi"/>
+        <result column="sdt" jdbcType="VARCHAR" property="sdt"/>
+        <result column="tinh_trang" jdbcType="INTEGER" property="tinhTrang"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:20.-->
+        id, khachhang_id, nhanvien_id, ma, ngay_tao, ngay_thanh_toan, ten_nguoi_nhan, dia_chi, sdt, tinh_trang
+    </sql>
+</mapper>

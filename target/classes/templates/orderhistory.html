@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+	ustora by freshdesignweb.com
+	Twitter: https://twitter.com/freshdesignweb
+	URL: https://www.freshdesignweb.com/ustora/
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ustora Demo</title>
+
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+  <link rel="stylesheet" th:href="@{/style.css}">
+  <link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="header-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="user-menu">
+          <ul>
+            <li th:if="${session.vaiTro == 'NV'}"><a href="#" th:text="${session.user.chucVuByChucvuId.ten +': ' + session.user.hoTen}"><i class="fa fa-user"></i></a></li>
+            <li th:if="${session.vaiTro == 'KH'}"><a href="#" th:text="${'Khách hàng: '+ session.user.hoTen}"> <i class="fa fa-user"></i></a></li>
+            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+            <li><a th:href="@{/showCart}"><i class="fa fa-user"></i> My Cart</a></li>
+            <li><a th:href="@{/showCheckout}"><i class="fa fa-user"></i> Checkout</a></li>
+            <li th:if="${session.user == null}"><a th:href="@{/showLogin}"><i class="fa fa-user"></i> Login</a></li>
+            <li th:if="${session.user != null}"><a th:href="@{/signOut}"><i class="fa fa-user"></i> Sign Out</a></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="header-right">
+          <ul class="list-unstyled list-inline">
+            <li class="dropdown dropdown-small">
+              <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">USD</a></li>
+                <li><a href="#">INR</a></li>
+                <li><a href="#">GBP</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-small">
+              <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">English</a></li>
+                <li><a href="#">French</a></li>
+                <li><a href="#">German</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- End header area -->
+
+<div class="site-branding-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="logo">
+          <h1><a th:href="@{/showIndex}"><img src="/img/logo.png"></a></h1>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="shopping-item">
+          <a th:href="@{/showCart}">Cart - <span class="cart-amunt" th:text="${session.totalPriceProduct +'$'}"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" th:text="${session.totalCartProduct}"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- End site branding area -->
+
+<div class="mainmenu-area">
+  <div class="container">
+    <div class="row">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a th:href="@{/showIndex}">Home</a></li>
+          <li><a th:href="@{/showShop/-1}">Shop page</a></li>
+          <li><a th:href="@{/showCart}">Cart</a></li>
+          <li><a th:href="@{/showCheckout}">Checkout</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Others</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End mainmenu area -->
+
+<div class="product-big-title-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="product-bit-title text-center">
+          <h2>Order History</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--  table  -->
+<div class="border border-1 p-5 mb-5">
+  <h2 class="text-center">List</h2>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Mã</th>
+      <th>Ngày Tạo</th>
+      <th>Ngày Thanh Toán</th>
+      <th>Ngày Ship</th>
+      <th>Ngày Nhận</th>
+      <th>Tình Trạng</th>
+      <th>Tên Người Nhận</th>
+      <th>Địa Chỉ</th>
+      <th>SDT</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${itemList}">
+      <td th:text="*{itemStat.count}"></td>
+      <td th:text="*{item.ma}"></td>
+      <td th:text="*{item.ngayTao}"></td>
+      <td th:text="*{item.ngayThanhToan}"></td>
+      <td th:text="*{item.ngayShip}"></td>
+      <td th:text="*{item.ngayNhan}"></td>
+      <td th:if="${item.tinhTrang == 0}" th:text="*{'Đã nhận hàng'}"></td>
+      <td th:if="${item.tinhTrang == 1}" th:text="*{'Đang chờ xác nhận'}"></td>
+      <td th:if="${item.tinhTrang == 2}" th:text="*{'Đang đóng gói'}"></td>
+      <td th:if="${item.tinhTrang == 3}" th:text="*{'Đang giao hàng'}"></td>
+      <td th:if="${item.tinhTrang == 4}" th:text="*{'Đã hủy'}"></td>
+      <td th:text="*{item.tenNguoiNhan}"></td>
+      <td th:text="*{item.diaChi}"></td>
+      <td th:text="*{item.sdt}"></td>
+      <td>
+        <a class="btn btn-primary" th:href="@{/detailOrder/{id}(id=*{item.id})}">Detail</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" th:href="@{/showOrderHistory/page{p}(p= -1)}">Previous</a></li>
+    <li class="page-item" th:each="page :${#numbers.sequence(0,totalPage)}"><a class="page-link" th:href="@{/showOrderHistory/page{p}(p=${page})}" th:text="*{page+1}"></a></li>
+    <li class="page-item"><a class="page-link" th:href="@{/showOrderHistory/page{p}(p= -2)}">Next</a></li>
+  </ul>
+</div>
+
+
+<div class="footer-top-area">
+  <div class="zigzag-bottom"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="footer-about-us">
+          <h2>u<span>Stora</span></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+          <div class="footer-social">
+            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="footer-menu">
+          <h2 class="footer-wid-title">User Navigation </h2>
+          <ul>
+            <li><a href="">My account</a></li>
+            <li><a th:href="@{/showOrderHistory}">Order history</a></li>
+            <li><a href="">Wishlist</a></li>
+            <li><a href="">Vendor contact</a></li>
+            <li><a href="">Front page</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="footer-menu">
+          <h2 class="footer-wid-title">Categories</h2>
+          <ul>
+            <li><a href="">Mobile Phone</a></li>
+            <li><a href="">Home accesseries</a></li>
+            <li><a href="">LED TV</a></li>
+            <li><a href="">Computer</a></li>
+            <li><a href="">Gadets</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="footer-newsletter">
+          <h2 class="footer-wid-title">Newsletter</h2>
+          <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Type your email">
+            <input type="submit" value="Subscribe">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="copyright">
+          <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="footer-card-icon">
+          <i class="fa fa-cc-discover"></i>
+          <i class="fa fa-cc-mastercard"></i>
+          <i class="fa fa-cc-paypal"></i>
+          <i class="fa fa-cc-visa"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Latest jQuery form server -->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<!-- Bootstrap JS form CDN -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- jQuery sticky menu -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+
+<!-- jQuery easing -->
+<script src="js/jquery.easing.1.3.min.js"></script>
+
+<!-- Main Script -->
+<script src="js/main.js"></script>
+</body>
+</html>

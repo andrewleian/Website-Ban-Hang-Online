@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.CuaHangRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.CuaHang">
+        <!--@JPA.Support generated on 2023-02-17 19:32:19.-->
+        <!--@Table cua_hang-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="ma" jdbcType="VARCHAR" property="ma"/>
+        <result column="ten" jdbcType="VARCHAR" property="ten"/>
+        <result column="dia_chi" jdbcType="VARCHAR" property="diaChi"/>
+        <result column="thanh_pho" jdbcType="VARCHAR" property="thanhPho"/>
+        <result column="quoc_gia" jdbcType="VARCHAR" property="quocGia"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:19.-->
+        id, ma, ten, dia_chi, thanh_pho, quoc_gia
+    </sql>
+</mapper>

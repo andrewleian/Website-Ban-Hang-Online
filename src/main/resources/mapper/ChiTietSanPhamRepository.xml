@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.ChiTietSanPhamRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.ChiTietSanPham">
+        <!--@JPA.Support generated on 2023-02-17 19:32:19.-->
+        <!--@Table chi_tiet_san_pham-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sanpham_id" jdbcType="INTEGER" property="sanphamId"/>
+        <result column="nsx_id" jdbcType="INTEGER" property="nsxId"/>
+        <result column="mausac_id" jdbcType="INTEGER" property="mausacId"/>
+        <result column="dongsanpham_id" jdbcType="INTEGER" property="dongsanphamId"/>
+        <result column="nam_bao_hanh" jdbcType="INTEGER" property="namBaoHanh"/>
+        <result column="mo_ta" jdbcType="VARCHAR" property="moTa"/>
+        <result column="so_luong_ton" jdbcType="INTEGER" property="soLuongTon"/>
+        <result column="gia_nhap" jdbcType="DECIMAL" property="giaNhap"/>
+        <result column="gia_ban" jdbcType="DECIMAL" property="giaBan"/>
+        <result column="anh" jdbcType="VARCHAR" property="anh"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:19.-->
+        id, sanpham_id, nsx_id, mausac_id, dongsanpham_id, nam_bao_hanh, mo_ta, so_luong_ton, gia_nhap, gia_ban, anh
+    </sql>
+</mapper>

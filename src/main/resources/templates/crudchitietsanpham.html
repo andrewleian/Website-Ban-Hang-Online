@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="">
+
+<div class="container">
+  <br> <br>
+  <!--    search-->
+<!--  <div class="border border-1 p-5">-->
+<!--    <h2 class="text-center">Search</h2>-->
+<!--    <form th:action="@{/searchProduct}" method="get">-->
+<!--      <div class="row">-->
+<!--        <div class="col-3">-->
+<!--          <label class="form-label">Category Name</label>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--          <input class="form-control" name="categoryName">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row mt-2">-->
+<!--        <div class="col-3">-->
+<!--          <label class="form-label">Product Name</label>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--          <input class="form-control" name="productName">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="d-flex justify-content-center mt-4">-->
+<!--        <button class="btn btn-primary ">Search</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--  <br><br>-->
+  <!--    add product-->
+  <div class="border border-1 p-5">
+    <h2 class="text-center">Product</h2>
+    <form th:action="@{/saveChiTietSanPham}" enctype="multipart/form-data" th:object="${item}"  method="post">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label">Id</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{id}">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">San pham id</label>
+        </div>
+        <div class="col">
+          <select th:field="*{sanphamId}" class="form-select"  >
+            <option th:each="sanPham : ${sanPhamList}" th:value="${sanPham.id}" th:text="${sanPham.ten+' ('+sanPham.ma+')'}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Nsx id</label>
+        </div>
+        <div class="col">
+          <select th:field="*{nsxId}" class="form-select"  >
+            <option th:each="nsx : ${nsxList}" th:value="${nsx.id}" th:text="${nsx.ten+' ('+nsx.ma+')'}"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Mau sac id</label>
+        </div>
+        <div class="col">
+          <select th:field="*{mausacId}" class="form-select"  >
+            <option th:each="mauSac : ${mauSacList}" th:value="${mauSac.id}" th:text="${mauSac.ten+' ('+mauSac.ma+')'}"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Dong san pham id</label>
+        </div>
+        <div class="col">
+          <select th:field="*{dongsanphamId}" class="form-select"  >
+            <option th:each="dongSanPham : ${dongSanPhamList}" th:value="${dongSanPham.id}" th:text="${dongSanPham.ten+' ('+dongSanPham.ma+')'}"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Nam bao hanh</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{namBaoHanh}">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Mô tả</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{moTa}">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Số lượng tồn</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{soLuongTon}">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Giá nhập</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{giaNhap}">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Giá bán</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{giaBan}">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Ảnh</label>
+        </div>
+        <div class="col">
+          <input type="file" class="form-control"  name="file" >
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4 gap-3">
+        <button class="btn btn-primary ">Add</button>
+        <button class="btn btn-primary ">Edit</button>
+      </div>
+    </form>
+  </div>
+
+  <br> <br>
+  <!--  table  -->
+  <div class="border border-1 p-5 mb-5">
+    <h2 class="text-center">List</h2>
+    <br>
+    <ul class="pagination justify-content-center">
+      <li class="page-item mx-2"><a class="page-link px-4 bg-primary text-white" th:href="@{/showChiTietSanPham}">All</a></li>
+
+      <li th:each="dsp: ${dongSanPhamList}" class="page-item mx-2"><a class="page-link px-4 bg-primary text-white" th:href="@{'/showFilter/'+${dsp.id}}"  th:text="${dsp.ten}"></a></li>
+
+      <li class="page-item mx-2"><a class="page-link px-4 bg-primary text-white" th:href="@{/showFilter/7}">Top Seller</a></li>
+      <li class="page-item mx-2"><a class="page-link px-4 bg-primary text-white" th:href="@{/showFilter/8}">Top New</a></li>
+    </ul>
+    <br>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sản Phẩm ID</th>
+        <th>NSX ID</th>
+        <th>Màu Sắc ID</th>
+        <th>Dòng Sản Phẩm ID</th>
+        <th>Năm Bảo Hành</th>
+        <th>Mô Tả</th>
+        <th>Số Lượng Tồn</th>
+        <th>Giá Nhập</th>
+        <th>Giá Bán</th>
+        <th>Ảnh</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${itemList}">
+        <td th:text="*{item.id}"></td>
+        <td th:text="*{item.sanPhamBySanphamId.id}"></td>
+        <td th:text="*{item.nsxByNsxId.ten}"></td>
+        <td th:text="*{item.mauSacByMausacId.ten}"></td>
+        <td th:text="*{item.dongSanPhamByDongsanphamId.ten}"></td>
+        <td th:text="*{item.namBaoHanh}"></td>
+        <td th:if="${item.moTa.length()>30}"  th:text="*{item.moTa.substring(0,30) +'...'}"></td>
+        <td th:if="${item.moTa.length()<30}"  th:text="*{item.moTa}"></td>
+        <td th:text="*{item.soLuongTon}"></td>
+        <td th:text="*{item.giaNhap}"></td>
+        <td th:text="*{item.giaBan}"></td>
+        <td>
+          <img style="width: 100px" th:src="@{'/img/'+ *{item.anh}}" alt="">
+          <p th:text="${item.anh}"></p>
+        </td>
+
+        <td th:if="${fillter == 7 || fillter ==8}">
+          <a class="btn btn-primary" th:href="@{/removeChiTietSanPham/{id}(id=*{item.id})}">Remove</a>
+        </td>
+
+        <td th:if="${fillter != 7 && fillter !=8}">
+          <a class="btn btn-primary" th:href="@{/editChiTietSanPham/{id}(id=*{item.id})}">Edit</a>
+          <a class="btn btn-primary" th:href="@{/removeChiTietSanPham/{id}(id=*{item.id})}">Remove</a>
+          <a class="btn btn-primary" th:href="@{/addToTopSeller/{id}(id=*{item.id})}">Add to top seller</a>
+          <a class="btn btn-primary" th:href="@{/addToTopNew/{id}(id=*{item.id})}">Add to top new</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" th:href="@{/showChiTietSanPham/page{p}(p= -1)}">Previous</a></li>
+      <li class="page-item" th:each="page :${#numbers.sequence(0,totalPage)}"><a class="page-link" th:href="@{/showChiTietSanPham/page{p}(p=${page})}" th:text="*{page+1}"></a></li>
+      <li class="page-item"><a class="page-link" th:href="@{/showChiTietSanPham/page{p}(p= -2)}">Next</a></li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

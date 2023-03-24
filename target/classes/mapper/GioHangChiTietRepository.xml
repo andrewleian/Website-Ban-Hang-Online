@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.assignment.repository.GioHangChiTietRepository">
+    <resultMap id="BaseResultMap" type="com.example.assignment.entity.GioHangChiTiet">
+        <!--@JPA.Support generated on 2023-02-17 19:32:20.-->
+        <!--@Table gio_hang_chi_tiet-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="giohangchitiet_giohang" jdbcType="INTEGER" property="giohangchitietGiohang"/>
+        <result column="giohangchitiet_chitietsanpham" jdbcType="INTEGER" property="giohangchitietChitietsanpham"/>
+        <result column="so_luong" jdbcType="INTEGER" property="soLuong"/>
+        <result column="don_gia" jdbcType="DECIMAL" property="donGia"/>
+        <result column="don_gia_khi_gia" jdbcType="DECIMAL" property="donGiaKhiGia"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-02-17 19:32:20.-->
+        id, giohangchitiet_giohang, giohangchitiet_chitietsanpham, so_luong, don_gia, don_gia_khi_gia
+    </sql>
+</mapper>

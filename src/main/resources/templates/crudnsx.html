@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="">
+
+<div class="container">
+  <br> <br>
+  <!--    search-->
+  <!--    <div class="border border-1 p-5">-->
+  <!--        <h2 class="text-center">Search</h2>-->
+  <!--        <form th:action="@{/searchProduct}" method="get">-->
+  <!--            <div class="row">-->
+  <!--                <div class="col-3">-->
+  <!--                    <label class="form-label">Category Name</label>-->
+  <!--                </div>-->
+  <!--                <div class="col">-->
+  <!--                    <input class="form-control" name="categoryName">-->
+  <!--                </div>-->
+  <!--            </div>-->
+  <!--            <div class="row mt-2">-->
+  <!--                <div class="col-3">-->
+  <!--                    <label class="form-label">Product Name</label>-->
+  <!--                </div>-->
+  <!--                <div class="col">-->
+  <!--                    <input class="form-control" name="productName">-->
+  <!--                </div>-->
+  <!--            </div>-->
+  <!--            <div class="d-flex justify-content-center mt-4">-->
+  <!--                <button class="btn btn-primary ">Search</button>-->
+  <!--            </div>-->
+  <!--        </form>-->
+  <!--    </div>-->
+  <br><br>
+  <!--    add product-->
+  <div class="border border-1 p-5">
+    <h2 class="text-center">Product</h2>
+    <form th:action="@{/saveNSX}" th:object="${item}" method="post">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label">ID</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{id}">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Ma</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{ma}" name="mssv">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <label class="form-label">Ten</label>
+        </div>
+        <div class="col">
+          <input class="form-control" th:field="*{ten}">
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4 gap-3">
+        <button class="btn btn-primary ">Add</button>
+        <button class="btn btn-primary ">Edit</button>
+      </div>
+    </form>
+  </div>
+
+  <br> <br>
+  <!--  table  -->
+  <div class="border border-1 p-5 mb-5">
+    <h2 class="text-center">List</h2>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ma</th>
+        <th>Ten</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${listItem}">
+        <td th:text="*{item.id}"></td>
+        <td th:text="*{item.ma}"></td>
+        <td th:text="*{item.ten}"></td>
+        <td>
+          <a class="btn btn-primary" th:href="@{/editNSX/{id}(id=*{item.id})}">Edit</a>
+          <a class="btn btn-primary" th:href="@{/removeNSX/{id}(id=*{item.id})}">Remove</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" th:href="@{/showNSX/page{p}(p= -1)}">Previous</a></li>
+      <li class="page-item" th:each="page :${#numbers.sequence(0,totalPage)}"><a class="page-link" th:href="@{/showNSX/page{p}(p=${page})}" th:text="*{page+1}"></a></li>
+      <li class="page-item"><a class="page-link" th:href="@{/showNSX/page{p}(p= -2)}">Next</a></li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
